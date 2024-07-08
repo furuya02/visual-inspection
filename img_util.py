@@ -17,6 +17,7 @@ def get_corner(img):
     return contours[0], binary
 
 
+# ターゲットを中央に移動
 def move_target_to_center(org_img):
     work_img = np.copy(org_img)
     oh, ow, _ = org_img.shape
@@ -43,6 +44,7 @@ def move_target_to_center(org_img):
     return center_img, work_img
 
 
+# 画像保存
 def save_img(img, output_path, basename, name):
     save_file_name = "{}/{}_{}.jpg".format(output_path, name, basename)
     cv2.imwrite(save_file_name, img)

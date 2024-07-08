@@ -200,28 +200,6 @@ def loop(cap, detection_area, embedding):
             # 画像の表示
             display_images(frame, tmp_img, detect_img)
 
-            # if sendor.check(target_mask):
-            #     basename = "{:03}".format(save_counter)
-
-            #     save_img(detect_img, output_path, basename, "detect")
-            #     save_img(frame, output_path, basename, "frame")
-            #     save_img(tmp_img, output_path, basename, "tmp")
-
-            #     center_img, work_img = move_target_to_center(detect_img)
-            #     save_img(center_img, output_path, basename, "center")
-            #     save_img(work_img, output_path, basename, "work")
-
-            #     # center_img = cv2.imread("output/center_000.jpg")
-            #     print(center_img.dtype)
-            #     center_img = np.array(center_img, dtype="uint8")
-            #     print(center_img.dtype)
-
-            #     route_img, dst_img = routeTarget.route(center_img)
-            #     save_img(route_img, output_path, basename, "route")
-            #     save_img(dst_img, output_path, basename, "dst")
-
-            #     save_counter += 1
-
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
         except KeyboardInterrupt:
@@ -233,9 +211,7 @@ def main():
     os.makedirs(output_path, exist_ok=True)
 
     droid_cam = "http://192.168.1.41:4747/video/force/1920x1080"
-    # droid_cam = "http://192.168.1.7:4747/video/force/640x480"
     cap = cv2.VideoCapture(droid_cam)
-    # cap = cv2.VideoCapture(0)
     if cap.isOpened() is False:
         raise IOError
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
